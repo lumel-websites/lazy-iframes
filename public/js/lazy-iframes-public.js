@@ -29,4 +29,16 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	 $(document).ready(function(e){
+		$('.lazy-iframe-overlay').click(function(ee){
+			var url = $(this).parent().data('url');
+			var embed_code = '';
+			if(url!=""){
+				embed_code = '<iframe loading="lazy" src="' + url  + '&autoplay=1&volume=1" allowtransparency="true" allow="autoplay" frameborder="0" scrolling="no" class="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen></iframe>';
+				$(this).parent().find('.lazy-iframe-wrapper').html(embed_code);
+				$(this).hide();	
+			}
+		});
+	});
+
 })( jQuery );
