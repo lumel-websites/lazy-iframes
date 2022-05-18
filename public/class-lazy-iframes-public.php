@@ -100,4 +100,59 @@ class Lazy_Iframes_Public {
 
 	}
 
+	/**
+	 * Lazy videos shortcode defination
+	 *
+	 * @since    1.0.0
+	 */
+	public function add_lazy_iframe_shortcode() { 
+
+		add_shortcode( 'lazy_iframe' , array( $this , 'lazy_iframe_shortcode_callback' ) );
+
+	}
+
+	/**
+	 * Lazy videos shortcode callback
+	 *
+	 * @since    1.0.0
+	 */
+	public function lazy_iframe_shortcode_callback( $atts ) {
+		
+		$atts = shortcode_atts(
+			array(
+				'url' => '',
+				'poster' => '',
+				'lazy_loading' => 'true'
+	        ) , 
+	     	$atts , 
+	     	'lazy_iframe' 
+	    );
+
+		$url 		= $atts[ 'url' ];
+		$poster 	= $atts[ 'poster' ];
+		$loading	= $atts[ 'lazy_loading' ];
+
+		if(empty($poster) && $poster=="") {
+			$output = '<p style="color:red;">[poster] - Poster is a required parameter';
+			return $output;
+		}
+		ob_start();
+		?>
+
+		<div class="lazy-iframe-container" data-url="<?php echo $url; ?>">
+			<div class="lazy-iframe-box">
+				<div class="lazy-iframe-wrapper" style="padding-top:56.2963%"></div>
+			</div>
+			<div class="lazy-iframe-overlay">
+				<img class="lazy-iframe-overlay-image" src="<?php echo $poster; ?>" width="100%" <?php echo ( $loading == "true" ) ? 'loading="lazy"' : '';  ?> />
+			</div>	
+		</div>
+
+		<?php
+
+		$output = ob_get_clean();
+		return $output;
+
+	}
+
 }
