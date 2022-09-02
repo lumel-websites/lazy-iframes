@@ -145,6 +145,8 @@ class Lazy_Iframes_Public {
 			</div>
 			<div class="lazy-iframe-overlay">
 				<img class="lazy-iframe-overlay-image" src="<?php echo $poster; ?>" width="100%" <?php echo ( $loading == "true" ) ? 'loading="lazy"' : '';  ?> />
+				<div class="lazy-iframe-overlay-hover"></div>	
+				<div class="lazy-iframe-play-icon"></div>
 			</div>	
 		</div>
 
