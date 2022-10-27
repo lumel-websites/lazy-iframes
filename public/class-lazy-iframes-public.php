@@ -124,7 +124,7 @@ class Lazy_Iframes_Public {
 				'poster' => '',
 				'button' => 'show',
 				'button_label' => 'View interactive content',
-				'button_text_color' => '#000',
+				'button_text_color' => '#3a3a3a',
 				'button_bg_color' => '#ffcd3d',
 				'lazy_loading' => 'true',
 	        ) , 
