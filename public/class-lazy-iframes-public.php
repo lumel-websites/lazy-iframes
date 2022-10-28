@@ -122,31 +122,52 @@ class Lazy_Iframes_Public {
 			array(
 				'url' => '',
 				'poster' => '',
-				'lazy_loading' => 'true'
+				'button' => 'show',
+				'button_label' => 'View interactive content',
+				'button_text_color' => '#3a3a3a',
+				'button_bg_color' => '#ffcd3d',
+				'lazy_loading' => 'true',
 	        ) , 
 	     	$atts , 
 	     	'lazy_iframe' 
 	    );
 
-		$url 		= $atts[ 'url' ];
-		$poster 	= $atts[ 'poster' ];
-		$loading	= $atts[ 'lazy_loading' ];
+		$url 		    = $atts[ 'url' ];
+		$poster 	    = $atts[ 'poster' ];
+		$loading	    = $atts[ 'lazy_loading' ];
+		$button	= $atts[ 'button' ];
+		$button_label	= $atts[ 'button_label' ];
+		$button_text_color	= $atts[ 'button_text_color' ];
+		$button_bg_color	= $atts[ 'button_bg_color' ];
 
 		if(empty($poster) && $poster=="") {
 			$output = '<p style="color:red;">[poster] - Poster is a required parameter';
 			return $output;
 		}
 		ob_start();
+		if($button_text_color) {
 		?>
-
+		<style>
+			.lazy-iframe-overlay .lazy-iframe-button {
+				color: <?php echo $button_text_color; ?>
+			}
+		</style>
+		<?php } if($button_bg_color) { ?>
+			<style>
+				.lazy-iframe-overlay .lazy-iframe-button {
+					background: <?php echo $button_bg_color; ?>
+				}
+			</style>
+		<?php } ?>
 		<div class="lazy-iframe-container" data-url="<?php echo $url; ?>">
 			<div class="lazy-iframe-box">
 				<div class="lazy-iframe-wrapper" style="padding-top:56.2963%"></div>
 			</div>
 			<div class="lazy-iframe-overlay">
 				<img class="lazy-iframe-overlay-image" src="<?php echo $poster; ?>" width="100%" <?php echo ( $loading == "true" ) ? 'loading="lazy"' : '';  ?> />
-				<div class="lazy-iframe-overlay-hover"></div>	
-				<div class="lazy-iframe-play-icon"></div>
+				<!-- <div class="lazy-iframe-overlay-hover"></div> -->
+				<!-- <div class="lazy-iframe-play-icon"></div> -->
+				<?php if($button=="show") { ?><div class="lazy-iframe-button"><?php echo $button_label; ?></div><?php } ?>
 			</div>	
 		</div>
 
