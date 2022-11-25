@@ -159,18 +159,19 @@ class Lazy_Iframes_Public {
 				}
 			</style>
 		<?php } ?>
-		<div class="lazy-iframe-container" data-url="<?php echo $url; ?>">
-			<div class="lazy-iframe-box">
-				<div class="lazy-iframe-wrapper" style="padding-top:56.2963%"></div>
+		<div class="lazy-iframe-wrapper">
+			<div class="lazy-iframe-container" data-url="<?php echo $url; ?>">
+				<div class="lazy-iframe-box">
+					<div class="lazy-iframe-wrapper" style="padding-top:56.2963%"></div>
+				</div>
+				<div class="lazy-iframe-overlay">
+					<img class="lazy-iframe-overlay-image" src="<?php echo $poster; ?>" width="100%" <?php echo ( $loading == "true" ) ? 'loading="lazy"' : '';  ?> />
+					<!-- <div class="lazy-iframe-overlay-hover"></div> -->
+					<!-- <div class="lazy-iframe-play-icon"></div> -->
+					<?php if($button=="show") { ?><div class="lazy-iframe-button"><?php echo $button_label; ?></div><?php } ?>
+				</div>	
 			</div>
-			<div class="lazy-iframe-overlay">
-				<img class="lazy-iframe-overlay-image" src="<?php echo $poster; ?>" width="100%" <?php echo ( $loading == "true" ) ? 'loading="lazy"' : '';  ?> />
-				<!-- <div class="lazy-iframe-overlay-hover"></div> -->
-				<!-- <div class="lazy-iframe-play-icon"></div> -->
-				<?php if($button=="show") { ?><div class="lazy-iframe-button"><?php echo $button_label; ?></div><?php } ?>
-			</div>	
 		</div>
-
 		<?php
 
 		$output = ob_get_clean();
